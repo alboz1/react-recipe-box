@@ -4,6 +4,18 @@ $black: #304050
 $grey: #485663
 $primary: #253447
 $secondary: #F2517D
+$white: #FAFAFB
+$blue: #2FABE1
 
 body
     font-family: 'Fira Sans', sans-serif
+    font-family: 16px
+
+.container
+    transform: translateX(0)
+    transition: 0.2s ease-in-out
+    &.toggled
+        transform: translateX(224.594px)
+
+@import 'header'
+@import 'sidebar'

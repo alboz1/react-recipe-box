@@ -1,0 +1,37 @@
+.sidebar
+    position: fixed
+    top: 0
+    left: 0
+    bottom: 0
+    background: $primary
+    padding: 0 1.5rem
+    //transform: translateX(-100%)
+    h3
+        margin: 0
+        padding: 1.2rem 0
+        border-bottom: 1px solid $grey
+        font-weight: 400
+        color: #fff
+
+    form
+        display: flex
+        flex-direction: column
+        margin-top: 1.2rem
+
+        input,textarea
+            margin-bottom: 2.1rem
+            padding: .6rem .8rem
+            border: 2px solid $blue
+            border-radius: 2px
+            color: $black
+            &::placeholder
+                color: $grey
+                font-size: 1rem
+        input[type="submit"]
+            background: none
+            border: 2px solid $secondary
+            color: #fff
+            cursor: pointer
+            transition: background 0.2s ease-in-out
+            &:hover
+                background: $secondary
