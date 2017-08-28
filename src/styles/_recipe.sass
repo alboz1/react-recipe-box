@@ -1,4 +1,5 @@
 .recipe-wrapper
+    flex: 0 1 300px
     display: flex
     justify-content: space-between
     align-items: center
@@ -12,15 +13,17 @@
     .name
         color: $grey
         font-weight: 600
-        margin-right: 3.8rem
-    .details-btn
-        color: $grey
-        margin-right: .5rem
-        &:hover
-            color: darken($grey, 25%)
-    .delete-btn
-        font-size: 1.5rem
-        font-weight: 600
-        color: $secondary
-        &:hover
-            color: darken($secondary, 10%)
+    
+    .btns-wrapper
+        display: flex
+        align-items: center
+        .details-btn
+            color: $grey
+            &:hover
+                color: darken($grey, 25%)
+        .delete-btn
+            font-size: 1.5rem
+            font-weight: 600
+            color: $secondary
+            &:hover
+                color: darken($secondary, 10%)

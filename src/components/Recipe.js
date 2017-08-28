@@ -5,8 +5,10 @@ class Recipe extends Component {
         return (
             <div className="recipe-wrapper">
                 <span className="name">{this.props.name}</span>
-                <button className="btn details-btn">View Recipe</button>
-                <button className="btn delete-btn">&times;</button>
+                <div className="btns-wrapper">
+                    <button className="btn details-btn">View Recipe</button>
+                    <button className="btn delete-btn" onClick={this.props.handleClick}>&times;</button>
+                </div>
             </div>
         );
     }

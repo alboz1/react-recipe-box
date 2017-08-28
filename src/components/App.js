@@ -39,7 +39,7 @@ class App extends Component {
             ingrediends: ingrediends.value.split(',')
         };
         newRecipesArr.push(newRecipe);
-        
+
         localStorage.setItem('recipes', JSON.stringify(newRecipesArr));
         this.setState({
             recipes: newRecipesArr
@@ -47,6 +47,20 @@ class App extends Component {
 
         recipeName.value = '';
         ingrediends.value = '';
+    }
+
+    deleteRecipe(e) {
+        const recipeArr = JSON.parse(localStorage.getItem('recipes'));
+        const recipeName = e.target.parentNode.parentNode.childNodes[0].textContent;
+
+        const newRecipeArr = recipeArr.filter(recipe => {
+            return recipe.name !== recipeName;
+        });
+
+        localStorage.setItem('recipes', JSON.stringify(newRecipeArr));
+        this.setState({
+            recipes: newRecipeArr
+        });
     }
 
     render() {
@@ -67,7 +81,7 @@ class App extends Component {
                     <main>
                         {
                             this.state.recipes.map((recipe, index) => {
-                                return <Recipe key={index} name={recipe.name} />
+                                return <Recipe key={index} name={recipe.name} handleClick={(e) => this.deleteRecipe(e)} />
                             })
                         }
                     </main>
