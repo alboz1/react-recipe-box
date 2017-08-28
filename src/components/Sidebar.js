@@ -5,10 +5,11 @@ class Sidebar extends Component {
         return (
             <aside className="sidebar">
                 <h3>Add a new recipe</h3>
-                <button className="close-btn" onClick={this.props.handleClose}>&times;</button>
-                <form>
-                    <input type="text" placeholder="Recipe Name" />
-                    <textarea rows="8" placeholder="Enter Ingredients"></textarea>
+                <button className="btn close-btn" onClick={this.props.handleClose}>&times;</button>
+
+                <form onSubmit={this.props.handleSubmit}>
+                    <input type="text" placeholder="Recipe Name" ref={this.props.recipeNameInput} />
+                    <textarea rows="8" placeholder="Enter Ingredients" ref={this.props.ingredientsInput}></textarea>
                     <input type="submit" value="Add" />
                 </form>
             </aside>

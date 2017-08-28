@@ -7,8 +7,16 @@ class App extends Component {
         super();
 
         this.state = {
-            isOpen: false
+            isOpen: false,
+            recipes: []
         };
+    }
+
+    componentDidMount() {
+        const recipes = JSON.parse(localStorage.getItem('recipes')) || [];
+        this.setState({
+            recipes: recipes
+        });
     }
 
     openSidebar() {
@@ -19,20 +27,49 @@ class App extends Component {
         this.setState({isOpen: false});
     }
 
+    submitRecipe(e) {
+        e.preventDefault();
+
+        const recipeName = this.name;
+        const ingrediends = this.ingredients;
+        const newRecipesArr = Array.from(this.state.recipes);
+
+        const newRecipe = {
+            name: recipeName.value,
+            ingrediends: ingrediends.value.split(',')
+        };
+        newRecipesArr.push(newRecipe);
+        
+        localStorage.setItem('recipes', JSON.stringify(newRecipesArr));
+        this.setState({
+            recipes: newRecipesArr
+        });
+
+        recipeName.value = '';
+        ingrediends.value = '';
+    }
+
     render() {
         return (
             <div className="outer-wrapper">
                 <div className={this.state.isOpen ? 'container toggled' : 'container'}>
-                    <Sidebar handleClose={() => this.closeSidebar()} />
+                    <Sidebar 
+                        handleClose={() => this.closeSidebar()}
+                        recipeNameInput={ref => this.name = ref}
+                        ingredientsInput={ref => this.ingredients = ref}
+                        handleSubmit={(e) => this.submitRecipe(e)}
+                    />
                     <header className="main-header">
-                        <button className="btn" onClick={() => this.openSidebar()} >New Recipe</button>
+                        <button className="btn new-recipe-btn" onClick={() => this.openSidebar()} >New Recipe</button>
                         <h1 className="title"><span>RECIPE</span> BOX</h1>
                     </header>
 
                     <main>
-                        <Recipe />
-                        <Recipe />
-                        <Recipe />
+                        {
+                            this.state.recipes.map((recipe, index) => {
+                                return <Recipe key={index} name={recipe.name} />
+                            })
+                        }
                     </main>
                 </div>
             </div>

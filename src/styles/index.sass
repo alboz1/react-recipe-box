@@ -11,6 +11,12 @@ body
     font-family: 'Fira Sans', sans-serif
     font-size: 16px
 
+//Helpers
+.btn
+    background: none
+    border: none
+    cursor: pointer
+
 .outer-wrapper
     overflow: hidden
     .container
@@ -20,9 +26,10 @@ body
             transform: translate3d(290px, 0, 0)
         
         main
-            width: 900px
+            max-width: 1000px
             margin: 0 auto
             display: flex
+            justify-content: center
             flex-wrap: wrap
 
 @import 'header'

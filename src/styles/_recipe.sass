@@ -1,19 +1,26 @@
 .recipe-wrapper
+    display: flex
+    justify-content: space-between
+    align-items: center
     background: $white
     padding: 1.3rem 1rem
     margin: 1.2rem 1rem
     border: 1px solid lighten($grey, 42%)
     border-radius: 2px
-    box-shadow: 0 1px 1px rgba(0,0,0, .3)
+    box-shadow: 0 1px 5px rgba(0,0,0, .15)
 
     .name
         color: $grey
         font-weight: 600
         margin-right: 3.8rem
-    button
-        background: none
-        border: none
+    .details-btn
         color: $grey
-        cursor: pointer
+        margin-right: .5rem
         &:hover
             color: darken($grey, 25%)
+    .delete-btn
+        font-size: 1.5rem
+        font-weight: 600
+        color: $secondary
+        &:hover
+            color: darken($secondary, 10%)
