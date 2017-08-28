@@ -14,19 +14,8 @@
         color: $black
         outline: none
         cursor: pointer
-        &:after
-            content: ''
-            display: block
-            height: 2px
-            background: $black
-            transform: translateY(100%)
-            opacity: 0
-            transition: all 0.1s ease-in-out
         &:hover
             color: darken($black, 10%)
-        &:hover:after
-            transform: translateY(0)
-            opacity: 1
 
     .title
         font-size: 1.9rem

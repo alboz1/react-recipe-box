@@ -3,16 +3,30 @@
     top: 0
     left: 0
     bottom: 0
+    width: 290px
     background: $primary
-    padding: 0 1.5rem
-    //transform: translateX(-100%)
+    box-sizing: border-box
+    box-shadow: inset -3px 0 3px rgba(0,0,0, .2)
+    padding: 0 1.2rem
+    transform: translateX(-100%)
     h3
         margin: 0
         padding: 1.2rem 0
         border-bottom: 1px solid $grey
         font-weight: 400
         color: #fff
-
+    .close-btn
+        background: none
+        border: none
+        position: absolute
+        top: 10px
+        right: 8px
+        font-size: 2rem
+        color: $secondary
+        cursor: pointer
+        outline: none
+        &:hover
+            color: darken($secondary, 10%)
     form
         display: flex
         flex-direction: column
@@ -27,6 +41,9 @@
             &::placeholder
                 color: $grey
                 font-size: 1rem
+        textarea
+            resize: none
+
         input[type="submit"]
             background: none
             border: 2px solid $secondary
