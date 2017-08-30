@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Sidebar from './Sidebar';
 import Recipe from './Recipe';
+import RecipeDetails from './RecipeDetails';
 
 class App extends Component {
     constructor() {
@@ -8,6 +9,7 @@ class App extends Component {
 
         this.state = {
             isOpen: false,
+            openRecipe: false,
             recipes: []
         };
     }
@@ -49,9 +51,8 @@ class App extends Component {
         ingrediends.value = '';
     }
 
-    deleteRecipe(e) {
+    deleteRecipe(recipeName) {
         const recipeArr = JSON.parse(localStorage.getItem('recipes'));
-        const recipeName = e.target.parentNode.parentNode.childNodes[0].textContent;
 
         const newRecipeArr = recipeArr.filter(recipe => {
             return recipe.name !== recipeName;
@@ -63,11 +64,19 @@ class App extends Component {
         });
     }
 
+    openRecipe() {
+        this.setState({openRecipe: true});
+    }
+
+    closeRecipe() {
+        this.setState({openRecipe: false});
+    }
+
     render() {
         return (
             <div className="outer-wrapper">
                 <div className={this.state.isOpen ? 'container toggled' : 'container'}>
-                    <Sidebar 
+                    <Sidebar
                         handleClose={() => this.closeSidebar()}
                         recipeNameInput={ref => this.name = ref}
                         ingredientsInput={ref => this.ingredients = ref}
@@ -80,9 +89,23 @@ class App extends Component {
 
                     <main>
                         {
-                            this.state.recipes.map((recipe, index) => {
-                                return <Recipe key={index} name={recipe.name} handleClick={(e) => this.deleteRecipe(e)} />
-                            })
+                            (function() {
+                                if (this.state.openRecipe) {
+                                    return <RecipeDetails
+                                        handleClose={() => this.closeRecipe()}
+                                    />
+                                } else {
+                                    return this.state.recipes.map((recipe, index) => {
+                                        return <Recipe
+                                            key={index}
+                                            name={recipe.name}
+                                            handleDelete={() => this.deleteRecipe(recipe.name)}
+                                            handleOpen={() => this.openRecipe(recipe.name)}
+                                        />
+                                    })
+
+                                }
+                            }.bind(this))()
                         }
                     </main>
                 </div>
