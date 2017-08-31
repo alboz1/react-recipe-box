@@ -6,72 +6,76 @@ import RecipeDetails from './RecipeDetails';
 class App extends Component {
     constructor() {
         super();
-
+        
         this.state = {
             isOpen: false,
             openRecipe: false,
+            openedRecipe: {},
             recipes: []
         };
     }
-
+    
     componentDidMount() {
         const recipes = JSON.parse(localStorage.getItem('recipes')) || [];
         this.setState({
             recipes: recipes
         });
     }
-
+    
     openSidebar() {
         this.setState({isOpen: true});
     }
-
+    
     closeSidebar() {
         this.setState({isOpen: false});
     }
-
+    
     submitRecipe(e) {
         e.preventDefault();
-
+        
         const recipeName = this.name;
-        const ingrediends = this.ingredients;
+        const ingredients = this.ingredients;
         const newRecipesArr = Array.from(this.state.recipes);
-
+        
         const newRecipe = {
             name: recipeName.value,
-            ingrediends: ingrediends.value.split(',')
+            ingredients: ingredients.value.split(',')
         };
         newRecipesArr.push(newRecipe);
-
+        
         localStorage.setItem('recipes', JSON.stringify(newRecipesArr));
         this.setState({
             recipes: newRecipesArr
         });
-
+        
         recipeName.value = '';
-        ingrediends.value = '';
+        ingredients.value = '';
     }
-
+    
     deleteRecipe(recipeName) {
         const recipeArr = JSON.parse(localStorage.getItem('recipes'));
-
+        
         const newRecipeArr = recipeArr.filter(recipe => {
             return recipe.name !== recipeName;
         });
-
+        
         localStorage.setItem('recipes', JSON.stringify(newRecipeArr));
         this.setState({
             recipes: newRecipeArr
         });
     }
-
-    openRecipe() {
-        this.setState({openRecipe: true});
+    
+    openRecipe(recipe) {
+        this.setState({
+            openedRecipe: recipe,
+            openRecipe: true
+        });
     }
-
+    
     closeRecipe() {
         this.setState({openRecipe: false});
     }
-
+    
     render() {
         return (
             <div className="outer-wrapper">
@@ -92,17 +96,23 @@ class App extends Component {
                             (function() {
                                 if (this.state.openRecipe) {
                                     return <RecipeDetails
+                                        recipe={this.state.openedRecipe}
                                         handleClose={() => this.closeRecipe()}
                                     />
-                                } else {
-                                    return this.state.recipes.map((recipe, index) => {
-                                        return <Recipe
-                                            key={index}
-                                            name={recipe.name}
-                                            handleDelete={() => this.deleteRecipe(recipe.name)}
-                                            handleOpen={() => this.openRecipe(recipe.name)}
-                                        />
-                                    })
+                                } else { 
+                                    return <div className="wrapper">
+                                        {
+                                            this.state.recipes.map((recipe, index) => {
+                                                return <Recipe
+                                                    key={index}
+                                                    name={recipe.name}
+                                                    handleDelete={() => this.deleteRecipe(recipe.name)}
+                                                    handleOpen={() => this.openRecipe(recipe)}
+                                                />
+                                             })
+                                        }
+                                    </div>
+                                    
 
                                 }
                             }.bind(this))()

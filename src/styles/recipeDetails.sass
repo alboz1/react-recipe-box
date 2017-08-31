@@ -1,0 +1,14 @@
+.details-wrapper
+    padding: 0 1rem
+    &.active
+        animation: zoom-in 0.2s linear forwards
+        transform-origin: bottom
+    h1
+        text-align: center
+        color: $grey
+
+@keyframes zoom-in
+    0%
+        transform: scale(0.7)
+    100%
+        transform: scale(1)
