@@ -1,3 +1,12 @@
+.close-btn
+    position: absolute
+    top: 10px
+    right: 8px
+    font-size: 2rem
+    color: $secondary
+    outline: none
+    &:hover
+        color: darken($secondary, 10%)
 .sidebar
     position: fixed
     top: 0
@@ -15,15 +24,6 @@
         border-bottom: 1px solid $grey
         font-weight: 400
         color: #fff
-    .close-btn
-        position: absolute
-        top: 10px
-        right: 8px
-        font-size: 2rem
-        color: $secondary
-        outline: none
-        &:hover
-            color: darken($secondary, 10%)
     form
         display: flex
         flex-direction: column
