@@ -104,7 +104,7 @@ class App extends Component {
                                         handleClose={() => this.closeRecipe()}
                                     />
                                 } else {
-                                    return <div className="wrapper">
+                                    return <div className={this.state.openRecipe ? 'wrapper' : 'wrapper active'}>
                                         {
                                             this.state.recipes.map((recipe, index) => {
                                                 return <Recipe
