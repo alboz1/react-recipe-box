@@ -91,5 +91,6 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  }
+  },
+  "homepage" : "https://alboz1.github.io/react-recipe-box"
 }
