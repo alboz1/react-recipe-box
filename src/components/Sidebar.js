@@ -9,7 +9,7 @@ class Sidebar extends Component {
 
                 <form onSubmit={this.props.handleSubmit}>
                     <input type="text" placeholder="Recipe Name" ref={this.props.recipeNameInput} />
-                    <textarea rows="8" placeholder="Enter Ingredients" ref={this.props.ingredientsInput}></textarea>
+                    <textarea rows="8" placeholder="Enter Ingredients, seperated with comma" ref={this.props.ingredientsInput}></textarea>
                     <input type="submit" value="Add" />
                 </form>
             </aside>

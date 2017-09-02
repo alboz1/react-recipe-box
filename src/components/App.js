@@ -51,7 +51,7 @@ class App extends Component {
         recipeName.value = '';
         ingredients.value = '';
     }
-    
+
     deleteRecipe(recipeName) {
         const recipeArr = JSON.parse(localStorage.getItem('recipes'));
         
@@ -73,7 +73,11 @@ class App extends Component {
     }
     
     closeRecipe() {
-        this.setState({openRecipe: false});
+        const recipes = JSON.parse(localStorage.getItem('recipes'));
+        this.setState({
+            openRecipe: false,
+            recipes: recipes
+        });
     }
     
     render() {
@@ -99,7 +103,7 @@ class App extends Component {
                                         recipe={this.state.openedRecipe}
                                         handleClose={() => this.closeRecipe()}
                                     />
-                                } else { 
+                                } else {
                                     return <div className="wrapper">
                                         {
                                             this.state.recipes.map((recipe, index) => {

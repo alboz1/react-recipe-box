@@ -10,7 +10,8 @@ $blue: #2FABE1
 body
     font-family: 'Fira Sans', sans-serif
     font-size: 16px
-
+    @media (max-width: 400px)
+        font-size: 15px
 //Helpers
 .btn
     background: none
@@ -18,7 +19,7 @@ body
     cursor: pointer
 
 .outer-wrapper
-    overflow: hidden
+    overflow-x: hidden
     .container
         height: 100vh
         transition: transform 0.2s ease-in-out
