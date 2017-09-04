@@ -212,6 +212,14 @@ module.exports = {
           // This loader don't uses a "test" so it will catch all modules
           // that fall through the other loaders.
           {
+            test: /\.sass$/,
+            include: paths.appSrc,
+            use: ExtractTextPlugin.extract({
+                fallback: require.resolve('style-loader'),
+                use: [require.resolve('css-loader'),require.resolve('sass-loader')]
+            })
+          },
+          {
             loader: require.resolve('file-loader'),
             // Exclude `js` files to keep "css" loader working as it injects
             // it's runtime that would otherwise processed through "file" loader.

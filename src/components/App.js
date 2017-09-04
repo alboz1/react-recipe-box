@@ -103,6 +103,8 @@ class App extends Component {
                                         recipe={this.state.openedRecipe}
                                         handleClose={() => this.closeRecipe()}
                                     />
+                                } else if (this.state.recipes.length === 0) {
+                                    return <h2 id="empty-notification-title">There are no recipes. Add some by clicking <span>'New Recipe'</span> button.</h2>
                                 } else {
                                     return <div className={this.state.openRecipe ? 'wrapper' : 'wrapper active'}>
                                         {

@@ -192,16 +192,16 @@ module.exports = {
               },
             ],
           },
-          {
-            test: /\.sass$/,
-            include: paths.appSrc,
-            loaders: [require.resolve('style-loader'), require.resolve('css-loader'), require.resolve('sass-loader')]
-          },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
           // In production, they would get copied to the `build` folder.
           // This loader don't uses a "test" so it will catch all modules
           // that fall through the other loaders.
+          {
+            test: /\.sass$/,
+            include: paths.appSrc,
+            loaders: [require.resolve('style-loader'), require.resolve('css-loader'), require.resolve('sass-loader')]
+          },
           {
             // Exclude `js` files to keep "css" loader working as it injects
             // it's runtime that would otherwise processed through "file" loader.
