@@ -1,0 +1,229 @@
+@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,600);body {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 16px; }
+  @media (max-width: 400px) {
+    body {
+      font-size: 15px; } }
+
+.btn {
+  background: none;
+  border: none;
+  cursor: pointer; }
+
+.active {
+  animation: zoom-in 0.4s cubic-bezier(0.29, 0.65, 0.7, 0.98) forwards;
+  transform-origin: center; }
+
+.outer-wrapper {
+  overflow-x: hidden; }
+  .outer-wrapper .container {
+    height: 100vh;
+    transition: transform 0.3s ease-in-out; }
+    .outer-wrapper .container.toggled {
+      transform: translate3d(290px, 0, 0); }
+    .outer-wrapper .container main {
+      max-width: 1000px;
+      margin: 0 auto; }
+      .outer-wrapper .container main .wrapper {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap; }
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #FAFAFB;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+  padding: 0 2.2rem; }
+  .main-header .new-recipe-btn {
+    padding: 1.2rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #304050;
+    outline: none; }
+    .main-header .new-recipe-btn:hover {
+      color: #1d2730; }
+  .main-header .title {
+    font-size: 1.9rem;
+    color: #F2517D;
+    font-weight: 400;
+    margin: 0; }
+    .main-header .title span {
+      font-weight: 600; }
+    @media (max-width: 340px) {
+      .main-header .title {
+        font-size: 1.2rem; } }
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  font-size: 2rem;
+  color: #F2517D;
+  outline: none; }
+  .close-btn:hover {
+    color: #ee225a; }
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 290px;
+  background: #253447;
+  box-sizing: border-box;
+  box-shadow: inset -3px 0 3px rgba(0, 0, 0, 0.2);
+  padding: 0 1.2rem;
+  transform: translateX(-100%); }
+  .sidebar h3 {
+    margin: 0;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid #485663;
+    font-weight: 400;
+    color: #fff; }
+  .sidebar form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.2rem; }
+    .sidebar form input, .sidebar form textarea {
+      margin-bottom: 2.1rem;
+      padding: .6rem .8rem;
+      border: 2px solid #2FABE1;
+      border-radius: 2px;
+      color: #304050; }
+      .sidebar form input::placeholder, .sidebar form textarea::placeholder {
+        color: #485663;
+        font-size: 1rem; }
+    .sidebar form textarea {
+      resize: none; }
+    .sidebar form input[type="submit"] {
+      background: none;
+      border: 2px solid #F2517D;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out; }
+      .sidebar form input[type="submit"]:hover {
+        background: #F2517D; }
+
+.recipe {
+  flex: 0 1 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #FAFAFB;
+  padding: 1.3rem 1rem;
+  margin: .8rem;
+  border: 1px solid #b7c1ca;
+  border-radius: 2px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease-in-out; }
+  .recipe:hover {
+    border-color: #93a3b1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25); }
+  .recipe .name {
+    color: #485663;
+    font-weight: 600; }
+  .recipe .btns-wrapper {
+    display: flex;
+    align-items: center; }
+    .recipe .btns-wrapper .details-btn {
+      color: #485663; }
+      .recipe .btns-wrapper .details-btn:hover {
+        color: #121619; }
+    .recipe .btns-wrapper .delete-btn {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #F2517D; }
+      .recipe .btns-wrapper .delete-btn:hover {
+        color: #e5114b; }
+
+.details-wrapper {
+  background: #FAFAFB;
+  border: 1px solid #b7c1ca;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  padding: 1.7rem 1rem;
+  margin: 1.3rem 1rem; }
+  @media (max-width: 400) {
+    .details-wrapper {
+      padding: 1.2rem 1rem; } }
+  .details-wrapper .flex-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+    .details-wrapper .flex-wrapper .edit {
+      text-decoration: underline;
+      color: #2FABE1;
+      font-weight: 600;
+      transition: all 0.1s ease-in-out; }
+      .details-wrapper .flex-wrapper .edit:hover {
+        color: #304050;
+        text-decoration: none; }
+  .details-wrapper .editing-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    color: #485663; }
+    .details-wrapper .editing-wrapper input[type="text"], .details-wrapper .editing-wrapper textarea {
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+      padding: 1rem .8rem;
+      margin-bottom: 1.2rem;
+      border: 2px solid #2FABE1;
+      border-radius: 2px; }
+    .details-wrapper .editing-wrapper .save {
+      align-self: flex-start;
+      border: 2px solid #2FABE1;
+      border-radius: 2px;
+      border-color: #32ba4b;
+      color: #32ba4b;
+      font-weight: 600;
+      padding: .5rem .8rem;
+      transition: all 0.2s ease-in-out; }
+      .details-wrapper .editing-wrapper .save:hover {
+        background: #32ba4b;
+        color: #fff; }
+  .details-wrapper .close-btn {
+    top: 0;
+    transition: color 0.2s ease-in-out; }
+    .details-wrapper .close-btn:hover {
+      color: #b60e3c; }
+  .details-wrapper h1 {
+    text-align: center;
+    color: #304050;
+    margin: 0; }
+    @media (max-width: 400px) {
+      .details-wrapper h1 {
+        font-size: 25px; } }
+  .details-wrapper h3 {
+    color: #304050;
+    text-transform: uppercase;
+    font-size: 1.4rem; }
+  .details-wrapper label {
+    margin-bottom: 1rem; }
+  .details-wrapper ul {
+    list-style: none;
+    padding: 0; }
+    .details-wrapper ul p {
+      color: #304050;
+      font-size: 1.1rem; }
+    .details-wrapper ul li {
+      background: #253447;
+      color: #fff;
+      border-bottom: 1px solid #93a3b1;
+      padding: 1.2rem .8rem; }
+      .details-wrapper ul li:first-letter {
+        text-transform: uppercase; }
+      .details-wrapper ul li:last-child {
+        border: none; }
+
+@keyframes zoom-in {
+  0% {
+    transform: scale(0.9);
+    opacity: 0; }
+  100% {
+    transform: scale(1);
+    opacity: 1; } }
+
+/*# sourceMappingURL=main.6bd1a8b9.css.map*/
